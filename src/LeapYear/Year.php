@@ -6,12 +6,20 @@ namespace App\LeapYear;
 
 class Year
 {
-    public function __construct(int $int)
+    private int $year;
+
+    public function __construct(int $year)
     {
+        $this->year = $year;
     }
 
     public function isLeap(): bool
     {
-        return false;
+        return $this->year % 400 === 0
+            || (
+                $this->year % 4 === 0
+                && $this->year % 100 !== 0
+            )
+            ;
     }
 }
